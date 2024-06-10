@@ -43,6 +43,8 @@ namespace mahjong
       std::cout << "捨てる牌を選択してください (左から0, 1, ...) >>> : ";
       int remove_index;
       std::cin >> remove_index;
+      std::cout << "捨て牌: " << players[player_index].GetHand()->GetTile(remove_index)
+                << std::endl;
       players[player_index].GetHand()->Remove(remove_index);
       players[player_index].GetHand()->Sort();
 
@@ -53,8 +55,6 @@ namespace mahjong
           std::chrono::duration_cast<std::chrono::microseconds>(end - start)
               .count() /
           1000.0);
-      std::cout << "捨て牌: " << players[player_index].GetHand()->GetTile(remove_index)
-                << std::endl;
       std::cout << "手牌: " << *players[player_index].GetHand() << std::endl;
       std::cout << "シャンテン数: " << syanten << "   計算時間: " << time << " [ms]" << std::endl;
       std::cout << std::endl;
